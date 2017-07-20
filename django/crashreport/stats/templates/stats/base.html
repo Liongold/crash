@@ -27,35 +27,39 @@
     <div class="version-nav">
         <div class="filter">
 	    <div class="width_33">
-                <p>&nbsp;</p>
+                <p>LibreOffice Crash Reports</p>
             </div>
             <div class"version_select width_34">
-                <label for="version_select">Select Version:</label>
-		<select name='version_select' id="version_select" onchange="version_dropdown()">
-                    <optgroup label=" ">
-                        <option value="{% url 'main'%}" {% if version == "current" %}selected{% endif %}>Current Versions</option>
-                        {% for v in versions %}
-                        {% if v.featured %}
-			<option value="{% url 'crash_version' v.str_without_product %}" {% if version == v.str_without_product %}selected="selected"{% endif %}>{{ v }}</option>
-                        {% endif %}
-                        {% endfor %}
-                    </optgroup>
-                    <optgroup label=" ">
-                        {% for v in versions %}
-                        {% if not v.featured %}
-			<option value="{% url 'crash_version' v.str_without_product %}" {% if version == v.str_without_product %}selected="selected"{% endif %}>{{ v }}</option>
-                        {% endif %}
-                        {% endfor %}
-                    </optgroup>
-                </select>
+                <p>
+		    <label for="version_select">Select Version: </label>
+		    <select name='version_select' id="version_select" onchange="version_dropdown()">
+                        <optgroup label=" ">
+                            <option value="{% url 'main'%}" {% if version == "current" %}selected{% endif %}>Current Versions</option>
+                            {% for v in versions %}
+                            {% if v.featured %}
+		       	    <option value="{% url 'crash_version' v.str_without_product %}" {% if version == v.str_without_product %}selected="selected"{% endif %}>{{ v }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </optgroup>
+                        <optgroup label=" ">
+                            {% for v in versions %}
+                            {% if not v.featured %}
+			    <option value="{% url 'crash_version' v.str_without_product %}" {% if version == v.str_without_product %}selected="selected"{% endif %}>{{ v }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </optgroup>
+                    </select>
+		</p>
             </div>
             <div class="width_33">
-                <form id="search_form" method="POST" action="{% url 'crash_search' %}">
-                    {% csrf_token %}
-                    <label for="search_id">ID Search:</label>
-                    <input id="search_id" name='search_id' type="text" />
-                    <button type="submit">Search</button>
-                </form>
+                <p>
+		    <form id="search_form" method="POST" action="{% url 'crash_search' %}">
+                        {% csrf_token %}
+                        <label for="search_id">ID Search:</label>
+                        <input id="search_id" name='search_id' type="text" />
+                        <button type="submit">Search</button>
+                    </form>
+		</p>
             </div>
         </div>
     </div>
