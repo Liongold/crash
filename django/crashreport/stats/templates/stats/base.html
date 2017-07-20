@@ -25,8 +25,11 @@
 </head>
 <body>
     <div class="version-nav">
-        <ul class="filter">
-            <li class"version_select">
+        <div class="filter">
+	    <div class="width_33">
+                <p>&nbsp;</p>
+            </div>
+            <div class"version_select width_34">
                 <label for="version_select">Select Version:</label>
 		<select name='version_select' id="version_select" onchange="version_dropdown()">
                     <optgroup label=" ">
@@ -45,16 +48,16 @@
                         {% endfor %}
                     </optgroup>
                 </select>
-            </li>
-            <li>
+            </div>
+            <div class="width_33">
                 <form id="search_form" method="POST" action="{% url 'crash_search' %}">
                     {% csrf_token %}
                     <label for="search_id">ID Search:</label>
                     <input id="search_id" name='search_id' type="text" />
                     <button type="submit">Search</button>
                 </form>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
     <div class="content">
     {% block content %}
